@@ -1,0 +1,14 @@
+int countways(int index , vector<vector<int>> &dp ,int a[] , int sum)
+	{
+	    if(sum==0){return 1;}
+	    if(index==0){return a[0]==sum;}
+	    if(dp[index][sum]!=-1) return dp[index][sum];
+	    int pick=0;
+	    int notpick=0;
+	    if(sum-a[index]>=0)
+	    {
+	        pick=countways(index-1,dp,a,sum-a[index]);
+	    }
+	    notpick=countways(index-1,dp,a,sum);
+	    return dp[index][sum]=pick+notpick;
+	}
